@@ -17,6 +17,62 @@ interface Project {
 }
 
 const projects: Project[] = [
+    {
+  title: "Urban Ladder Test Automation Framework",
+  category: "Software Testing & Automation",
+  description: "Built a hybrid Selenium automation framework for Urban Ladder that automates end-to-end e-commerce user journeys using Page Object Model, Keyword-Driven, and Data-Driven testing. Supports parallel cross-browser execution with comprehensive reporting and CI/CD integration.",
+  technologies: [
+    "Java",
+    "Selenium WebDriver",
+    "TestNG",
+    "Maven",
+    "Apache POI",
+    "Log4j2",
+    "ExtentReports",
+    "Allure Reports",
+    "WebDriverManager",
+    "Jenkins",
+    "GitHub Actions"
+  ],
+  role: "Automation Test Engineer",
+  link: "",
+  story: [
+    "Developed a scalable hybrid automation framework combining Page Object Model, Keyword-Driven, and Data-Driven testing methodologies to automate critical user workflows on Urban Ladder.",
+    "Automated multiple end-to-end scenarios including bookshelf filtering, collections exploration, and gift card form validation while supporting parallel execution across Chrome, Edge, and Firefox browsers.",
+    "Implemented reusable page objects, Excel-driven test execution, ThreadLocal WebDriver management, automated screenshot capture, logging, and rich reporting through ExtentReports and Allure.",
+    "Integrated CI/CD pipelines using Jenkins and GitHub Actions to enable automated test execution, reporting, and maintainable regression testing at scale.",
+    "This project strengthened my expertise in test automation architecture, framework design, cross-browser testing, reporting, and continuous integration practices."
+  ],
+  images: []
+},
+  {
+  "title": "Travel Confidence Engine – Intelligent Bus Fare Tracking and Analytics Platform",
+  "category": "Data Engineering & Product Development",
+  "description": "Built a production-ready travel analytics platform that tracks intercity bus fares using reverse-engineered RedBus APIs, stores historical observations, and provides travelers with fare intelligence through a Telegram bot. The system automatically collects fare snapshots every 3 hours, analyzes pricing trends, and surfaces the cheapest travel options for informed booking decisions.",
+  "technologies": [
+    "Python",
+    "SQLite",
+    "Telegram Bot API",
+    "AWS EC2",
+    "APScheduler",
+    "REST APIs",
+    "Data Engineering",
+    "System Design",
+    "Linux",
+    "Systemd",
+    "Git",
+    "GitHub"
+  ],
+  "role": "Full Stack Developer & Product Architect",
+  "link": "https://github.com/pranavatpeaks/travel-confidence-engine",
+  "story": [
+    "The Travel Confidence Engine started as an attempt to answer a simple question: should I book my bus ticket now or wait? Existing travel platforms showed current prices but offered no historical context or confidence indicators.",
+    "I reverse engineered RedBus APIs, designed a tracker-based architecture, built automated data collection pipelines, and deployed a scheduler on AWS EC2 that continuously gathers fare observations, seat availability, operator information, departure times, and journey metadata.",
+    "The project evolved from a scraper into a travel intelligence platform featuring route tracking, fare history, cheapest bus recommendations, and historical analytics. It gave me hands-on experience in backend engineering, automation, cloud deployment, database design, and building data-driven consumer products."
+  ],
+  "images": []
+},
+
   {
     title: "The Nectar Brew",
     category: "Full-Stack Development",
@@ -156,35 +212,7 @@ const projects: Project[] = [
       "The project sharpened my ability to translate purpose-driven goals into polished branding and strategic content."
     ],
     images: []
-  },
-  {
-  title: "Urban Ladder Test Automation Framework",
-  category: "Software Testing & Automation",
-  description: "Built a hybrid Selenium automation framework for Urban Ladder that automates end-to-end e-commerce user journeys using Page Object Model, Keyword-Driven, and Data-Driven testing. Supports parallel cross-browser execution with comprehensive reporting and CI/CD integration.",
-  technologies: [
-    "Java",
-    "Selenium WebDriver",
-    "TestNG",
-    "Maven",
-    "Apache POI",
-    "Log4j2",
-    "ExtentReports",
-    "Allure Reports",
-    "WebDriverManager",
-    "Jenkins",
-    "GitHub Actions"
-  ],
-  role: "Automation Test Engineer",
-  link: "",
-  story: [
-    "Developed a scalable hybrid automation framework combining Page Object Model, Keyword-Driven, and Data-Driven testing methodologies to automate critical user workflows on Urban Ladder.",
-    "Automated multiple end-to-end scenarios including bookshelf filtering, collections exploration, and gift card form validation while supporting parallel execution across Chrome, Edge, and Firefox browsers.",
-    "Implemented reusable page objects, Excel-driven test execution, ThreadLocal WebDriver management, automated screenshot capture, logging, and rich reporting through ExtentReports and Allure.",
-    "Integrated CI/CD pipelines using Jenkins and GitHub Actions to enable automated test execution, reporting, and maintainable regression testing at scale.",
-    "This project strengthened my expertise in test automation architecture, framework design, cross-browser testing, reporting, and continuous integration practices."
-  ],
-  images: []
-}
+  }
 ];
 
 export const ProjectsSection = () => {
