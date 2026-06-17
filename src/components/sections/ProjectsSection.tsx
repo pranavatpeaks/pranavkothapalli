@@ -156,7 +156,35 @@ const projects: Project[] = [
       "The project sharpened my ability to translate purpose-driven goals into polished branding and strategic content."
     ],
     images: []
-  }
+  },
+  {
+  title: "Urban Ladder Test Automation Framework",
+  category: "Software Testing & Automation",
+  description: "Built a hybrid Selenium automation framework for Urban Ladder that automates end-to-end e-commerce user journeys using Page Object Model, Keyword-Driven, and Data-Driven testing. Supports parallel cross-browser execution with comprehensive reporting and CI/CD integration.",
+  technologies: [
+    "Java",
+    "Selenium WebDriver",
+    "TestNG",
+    "Maven",
+    "Apache POI",
+    "Log4j2",
+    "ExtentReports",
+    "Allure Reports",
+    "WebDriverManager",
+    "Jenkins",
+    "GitHub Actions"
+  ],
+  role: "Automation Test Engineer",
+  link: "",
+  story: [
+    "Developed a scalable hybrid automation framework combining Page Object Model, Keyword-Driven, and Data-Driven testing methodologies to automate critical user workflows on Urban Ladder.",
+    "Automated multiple end-to-end scenarios including bookshelf filtering, collections exploration, and gift card form validation while supporting parallel execution across Chrome, Edge, and Firefox browsers.",
+    "Implemented reusable page objects, Excel-driven test execution, ThreadLocal WebDriver management, automated screenshot capture, logging, and rich reporting through ExtentReports and Allure.",
+    "Integrated CI/CD pipelines using Jenkins and GitHub Actions to enable automated test execution, reporting, and maintainable regression testing at scale.",
+    "This project strengthened my expertise in test automation architecture, framework design, cross-browser testing, reporting, and continuous integration practices."
+  ],
+  images: []
+}
 ];
 
 export const ProjectsSection = () => {
