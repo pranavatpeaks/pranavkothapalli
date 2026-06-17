@@ -3,7 +3,7 @@ import React from "react";
 const book = {
   title: "Freedom at Midnight",
   author: "Larry Collins & Dominique Lapierre",
-  cover: "https://upload.wikimedia.org/wikipedia/en/5/5d/Freedom_at_Midnight_book_cover.jpg",
+  cover: "https://m.media-amazon.com/images/I/81avVGSqXKL._AC_UF1000,1000_QL80_.jpg",
   description:
     "Freedom at Midnight is a historical narrative that chronicles the final year of British rule in India and the dramatic events surrounding Indian independence and partition in 1947. Through vivid storytelling, the authors explore the political negotiations, personal relationships, and human tragedies that shaped the birth of India and Pakistan. The book offers detailed portraits of key figures such as Mahatma Gandhi, Jawaharlal Nehru, Muhammad Ali Jinnah, and Lord Mountbatten, while capturing the triumphs, conflicts, and consequences of one of the most significant transitions in modern history.",
   year: 1975,
