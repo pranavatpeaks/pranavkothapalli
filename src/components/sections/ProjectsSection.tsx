@@ -316,12 +316,12 @@ export const ProjectsSection = () => {
       <Dialog open={isDialogOpen} onOpenChange={(open) => {
         if (!open) setSelectedProject(null);
       }}>
-        <DialogContent className="max-w-5xl overflow-hidden p-0 sm:p-0">
+        <DialogContent className="w-[calc(100%-2rem)] max-w-4xl overflow-y-auto max-h-[90vh] p-4 sm:p-6 md:p-8">
           {selectedProject ? (
-            <div className="grid gap-6 bg-background sm:grid-cols-[1.3fr_0.7fr]">
-              <div className="space-y-6 p-6 sm:p-8">
+            <div className="grid gap-6 bg-background grid-cols-1 lg:grid-cols-[1.3fr_0.7fr]">
+              <div className="space-y-6">
                 <DialogHeader>
-                  <DialogTitle className="text-3xl md:text-4xl font-bold text-foreground">
+                  <DialogTitle className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
                     {selectedProject.title}
                   </DialogTitle>
                   <DialogDescription className="text-sm text-muted-foreground">
@@ -329,7 +329,7 @@ export const ProjectsSection = () => {
                   </DialogDescription>
                 </DialogHeader>
 
-                <div className="space-y-5 text-sm leading-7 text-muted-foreground">
+                <div className="space-y-5 text-sm leading-7 text-muted-foreground overflow-y-auto max-h-96">
                   <p>{selectedProject.description}</p>
                   {selectedProject.story.map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>
@@ -340,7 +340,7 @@ export const ProjectsSection = () => {
                   {selectedProject.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="inline-flex items-center rounded-full bg-secondary/10 px-3 py-1 text-sm text-secondary-foreground"
+                      className="inline-flex items-center rounded-full bg-secondary/10 px-3 py-1 text-xs sm:text-sm text-secondary-foreground"
                     >
                       {tech}
                     </span>
@@ -356,6 +356,7 @@ export const ProjectsSection = () => {
                   {selectedProject.link ? (
                     <Button
                       variant="secondary"
+                      size="sm"
                       onClick={() => window.open(selectedProject.link, "_blank")}
                     >
                       Open Project
@@ -366,19 +367,19 @@ export const ProjectsSection = () => {
               </div>
 
               {selectedProject.images.length > 0 ? (
-                <div className="space-y-4 overflow-hidden border-l border-border bg-slate-950/80 p-6 sm:p-8">
+                <div className="space-y-4 overflow-y-auto max-h-96 bg-slate-950/80 p-4 sm:p-6 rounded-lg border border-border lg:border-l">
                   {selectedProject.images.map((src, index) => (
-                    <div key={index} className="overflow-hidden rounded-3xl border border-white/10 bg-slate-950">
+                    <div key={index} className="overflow-hidden rounded-lg border border-white/10 bg-slate-950">
                       <img
                         src={src}
                         alt={`${selectedProject.title} screenshot ${index + 1}`}
-                        className="h-56 w-full object-cover"
+                        className="w-full h-auto object-cover"
                       />
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="flex items-center justify-center border-l border-border bg-[#09101c] p-6 text-center text-sm text-muted-foreground sm:p-8">
+                <div className="flex items-center justify-center bg-slate-950/80 p-4 sm:p-6 rounded-lg border border-border text-center text-sm text-muted-foreground">
                   Add project images to the <code className="rounded bg-muted/20 px-2 py-1 text-xs text-foreground">images</code> array to show visual storytelling.
                 </div>
               )}
