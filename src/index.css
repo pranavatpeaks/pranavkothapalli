@@ -113,3 +113,31 @@ All colors MUST be HSL.
     text-wrap: balance;
   }
 }
+
+/* Reduced visual mode: disable expensive blurs, glows, and heavy filters */
+@layer base {
+  .reduced-visual .backdrop-blur-sm,
+  .reduced-visual .backdrop-blur,
+  .reduced-visual .backdrop-blur-md,
+  .reduced-visual .backdrop-blur-lg,
+  .reduced-visual .backdrop-blur-xl,
+  .reduced-visual .backdrop-blur-3xl {
+    backdrop-filter: none !important;
+  }
+
+  .reduced-visual .blur-3xl,
+  .reduced-visual .blur-xl,
+  .reduced-visual .blur-lg {
+    filter: none !important;
+  }
+
+  .reduced-visual .shadow-glow {
+    box-shadow: none !important;
+  }
+
+  .reduced-visual .mix-blend-soft-light,
+  .reduced-visual .mix-blend-overlay {
+    mix-blend-mode: normal !important;
+    opacity: 0.9 !important;
+  }
+}

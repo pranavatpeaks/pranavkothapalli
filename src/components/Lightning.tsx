@@ -21,9 +21,12 @@ const Lightning: React.FC<LightningProps> = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    // Resize only on demand (initial + window resize) using DPR scaling
     const resizeCanvas = () => {
-      canvas.width = canvas.clientWidth;
-      canvas.height = canvas.clientHeight;
+      const dpr = Math.max(1, window.devicePixelRatio || 1);
+      canvas.width = Math.floor(canvas.clientWidth * dpr);
+      canvas.height = Math.floor(canvas.clientHeight * dpr);
+      // keep css size unchanged; GL viewport will be set on render
     };
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
@@ -51,7 +54,8 @@ const Lightning: React.FC<LightningProps> = ({
       uniform float uIntensity;
       uniform float uSize;
       
-      #define OCTAVE_COUNT 10
+      // Lower octave count to reduce shader work on less powerful devices
+      #define OCTAVE_COUNT 6
 
       vec3 hsv2rgb(vec3 c) {
           vec3 rgb = clamp(abs(mod(c.x * 6.0 + vec3(0.0,4.0,2.0), 6.0) - 3.0) - 1.0, 0.0, 1.0);
@@ -167,24 +171,44 @@ const Lightning: React.FC<LightningProps> = ({
     const uSizeLocation = gl.getUniformLocation(program, 'uSize');
 
     const startTime = performance.now();
+
+    let rafId: number | null = null;
+    let isVisible = true;
+
     const render = () => {
-      resizeCanvas();
+      // skip rendering when not visible
+      if (!isVisible) {
+        rafId = requestAnimationFrame(render);
+        return;
+      }
+
       gl.viewport(0, 0, canvas.width, canvas.height);
-      gl.uniform2f(iResolutionLocation, canvas.width, canvas.height);
+      if (iResolutionLocation) gl.uniform2f(iResolutionLocation, canvas.width, canvas.height);
       const currentTime = performance.now();
-      gl.uniform1f(iTimeLocation, (currentTime - startTime) / 1000.0);
-      gl.uniform1f(uHueLocation, hue);
-      gl.uniform1f(uXOffsetLocation, xOffset);
-      gl.uniform1f(uSpeedLocation, speed);
-      gl.uniform1f(uIntensityLocation, intensity);
-      gl.uniform1f(uSizeLocation, size);
+      if (iTimeLocation) gl.uniform1f(iTimeLocation, (currentTime - startTime) / 1000.0);
+      if (uHueLocation) gl.uniform1f(uHueLocation, hue);
+      if (uXOffsetLocation) gl.uniform1f(uXOffsetLocation, xOffset);
+      if (uSpeedLocation) gl.uniform1f(uSpeedLocation, speed);
+      if (uIntensityLocation) gl.uniform1f(uIntensityLocation, intensity);
+      if (uSizeLocation) gl.uniform1f(uSizeLocation, size);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
-      requestAnimationFrame(render);
+      rafId = requestAnimationFrame(render);
     };
-    requestAnimationFrame(render);
+
+    // Pause rendering when canvas is offscreen to save CPU/GPU
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        isVisible = entry.isIntersecting;
+      });
+    }, { threshold: 0 });
+    observer.observe(canvas);
+
+    rafId = requestAnimationFrame(render);
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      if (rafId) cancelAnimationFrame(rafId);
+      observer.disconnect();
     };
   }, [hue, xOffset, speed, intensity, size]);
 

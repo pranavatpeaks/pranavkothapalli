@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X, Moon, Sun, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 
@@ -16,6 +16,7 @@ export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [noLightning, setNoLightning] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +33,24 @@ export const Navigation = () => {
       document.documentElement.classList.remove("dark");
     }
   }, [isDark]);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('noLightning');
+      setNoLightning(stored === '1');
+    } catch (e) {
+      setNoLightning(false);
+    }
+  }, []);
+
+  const toggleLightning = () => {
+    const next = !noLightning;
+    setNoLightning(next);
+    try {
+      localStorage.setItem('noLightning', next ? '1' : '0');
+    } catch (e) {}
+    window.dispatchEvent(new CustomEvent('noLightning:change', { detail: next }));
+  };
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -80,6 +99,14 @@ export const Navigation = () => {
               <Switch checked={isDark} onCheckedChange={setIsDark} />
               <Moon className="h-4 w-4 text-foreground" />
             </div>
+            <button
+              aria-label="Toggle lightning"
+              onClick={toggleLightning}
+              className={`p-2 rounded-md ml-2 ${noLightning ? 'opacity-50' : 'opacity-100'} hover:opacity-90 transition-opacity`}
+              title={noLightning ? 'Enable Lightning' : 'Disable Lightning'}
+            >
+              <Zap className="h-5 w-5 text-foreground" />
+            </button>
             <Button
               variant="hero"
               size="sm"
@@ -96,6 +123,14 @@ export const Navigation = () => {
               <Switch checked={isDark} onCheckedChange={setIsDark} />
               <Moon className="h-4 w-4 text-foreground" />
             </div>
+            <button
+              aria-label="Toggle lightning"
+              onClick={toggleLightning}
+              className={`p-2 rounded-md ${noLightning ? 'opacity-50' : 'opacity-100'} hover:opacity-90 transition-opacity`}
+              title={noLightning ? 'Enable Lightning' : 'Disable Lightning'}
+            >
+              <Zap className="h-5 w-5 text-foreground" />
+            </button>
             <button
               className="p-2 text-foreground hover:text-primary transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
