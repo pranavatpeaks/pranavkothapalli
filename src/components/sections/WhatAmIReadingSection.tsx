@@ -1,14 +1,14 @@
 import React from "react";
 
 const book = {
-  title: "Bhagavad Gita As It Is",
-  author: "A.C. Bhaktivedanta Swami Prabhupada",
-  cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4ljZY-OZXNts8zG1_ZMifcRo7xp5YUmS_SA&s",
+  title: "Freedom at Midnight",
+  author: "Larry Collins & Dominique Lapierre",
+  cover: "https://upload.wikimedia.org/wikipedia/en/5/5d/Freedom_at_Midnight_book_cover.jpg",
   description:
-    "The largest-selling edition of the Gita all over the world, Bhagavad-Gita as It Is, is more than a book. For many it has changed their lives altogether. Universally Bhagavad-Gita is renowned and truly claimed as the crown jewel of India?s spiritual wisdom. Spoken by Lord Krishna the Supreme Personality of Godhead to His intimate disciple Arjuna, the Gita’s seven hundred concise verses provides a definitive guide to the science of self realization. Complete wisdom with original sanskrit texts, word to word meaning, translation and purpot by His divine gracre A.C Bhakti Vedanta Swami Srila Prabhupada, Founder acharya of ISKCON",
-  year: 1972,
-  genre: "Spiritual, Philosophy",
-  link: "https://krsnaconsciousness.com/products/bhagavad-gita-as-it-is-macmillan-edition"
+    "Freedom at Midnight is a historical narrative that chronicles the final year of British rule in India and the dramatic events surrounding Indian independence and partition in 1947. Through vivid storytelling, the authors explore the political negotiations, personal relationships, and human tragedies that shaped the birth of India and Pakistan. The book offers detailed portraits of key figures such as Mahatma Gandhi, Jawaharlal Nehru, Muhammad Ali Jinnah, and Lord Mountbatten, while capturing the triumphs, conflicts, and consequences of one of the most significant transitions in modern history.",
+  year: 1975,
+  genre: "History, Politics, Non-fiction",
+  link: "https://en.wikipedia.org/wiki/Freedom_at_Midnight"
 };
 
 
